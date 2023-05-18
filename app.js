@@ -9,7 +9,10 @@ const client = new pg.Client({
 //conect to data bace
 await client.connect();
 //send a query
-const result = await client.query("SELECT * FROM books1;")
+const id = 1;
+const values = [id];
+const query = `SELECT * FROM banana WHERE id = $1;`;
+const result = await client.query(query, values)
 console.log(result.rows)
 //close the connection
 await client.end();

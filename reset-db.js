@@ -14,8 +14,11 @@ const client = new pg.Client({
     //send a query
     const result = await client.query(" DROP TABLE IF EXISTS books1;")
     const result1 = await client.query("DROP TABLE IF EXISTS authors2;")
+    const result2 = await client.query(" DROP TABLE IF EXISTS banana;")
     const createBooks = await client.query("CREATE TABLE banana(id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY, color TEXT, size INT );")
-    console.log(result.rows, result1.rows, createBooks)
+    const populareBooks = await client.query("INSERT INTO banana(color,size ) VALUES('purple', '18');")
+    console.log(result.rows, result1.rows, populareBooks)
+
     //close the connection
     await client.end();
 
